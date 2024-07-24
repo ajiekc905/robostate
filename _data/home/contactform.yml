@@ -28,3 +28,11 @@ fields:
     type: textarea
     pattern: ".{5,}"
     error: Message is required.
+
+  - id: subscribe
+    title: Subscribe
+    type: checkbox
+    value: true
+
+
+---

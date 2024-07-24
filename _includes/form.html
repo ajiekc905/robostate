@@ -5,21 +5,21 @@
     <h2 class="flex column text-center">{{ contact.title }}</h2>
     <form action="https://formsubmit.co/{{contact.email}}" method="POST" class="column flex">
       {%- for field in contact.fields -%}
-      <div class="minw800px:width:100% form-group">
-        <label class="label" for="{{field.id}}">{{field.title}}</label>
-        {% if field.type == blank %}
-        <input type="text" class="input" id="{{field.id}}" name="{{field.id}}" required>
-        {% endif %}
-        {% if field.type == "textarea" %}
-        <textarea type="text" class="input" id="{{field.id}}" name="{{field.id}}" required rows="4" {% if field.pattern
-          !=blank %}pattern="{{field.pattern}}" {% endif %} placeholder="{{field.title}}"></textarea>
-        {% else %}
-        <input class="input" {% if field.type !=blank %}type="{{field.type}}" {% endif %} id="{{field.id}}"
-          name="{{field.id}}" required {% if field.pattern !=blank %}pattern="{{field.pattern}}" {% endif %}
-          placeholder="{{field.title}}">
-        {% endif %}
-        <div class="error-message"> {{field.error}} </div>
-      </div>
+        <div class="minw800px:width:100% form-group">
+          <label class="label" for="{{field.id}}">{{field.title}}</label>
+          {% if field.type == "textarea" %}
+            <textarea class="input" id="{{field.id}}" name="{{field.id}}" required rows="4" 
+              {% if field.pattern %}pattern="{{field.pattern}}" {% endif %} 
+              placeholder="{{field.title}}"></textarea>
+          {% elsif field.type == "checkbox" %}
+      <input type="checkbox" class="input" id="{{field.id}}" name="{{field.id}}" checked="{{field.value}}">
+          {% else %}
+            <input class="input" type="{{field.type | default('text')}}" id="{{field.id}}" name="{{field.id}}" required 
+              {% if field.pattern %}pattern="{{field.pattern}}" {% endif %} 
+              placeholder="{{field.title}}">
+          {% endif %}
+          <div class="error-message">{{field.error}}</div>
+        </div>
       {%- endfor -%}
       <div class="minw800px:width:100% padding-bottom:2rem form-group">
         <button type="submit">Submit</button>
