@@ -1,5 +1,5 @@
 ---
-title: Junior Robotics 8 - 14
+title: Junior
 images:
   - junior-01.jpg
   - junior-02.jpg

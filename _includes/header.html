@@ -1,22 +1,22 @@
 {%- assign headerdata  = site.data.home.header -%}
-<header class="shadow" role="banner" {%if headerdata.bg != blank %}style="background-color: {{ headerdata.bg}}" {% endif %}>
+<header class="shadow violet-bg" role="banner" {%if headerdata.bg != blank %}style="background-color: {{ headerdata.bg}}" {% endif %}>
 
   <input type="checkbox" id="nav-trigger" class="none nav-trigger checked~div" />
-  <div class="max-width flex column ">
+  <div class="max-width flex column  white-fg">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
 
     {%- if page_paths -%}
-      <nav class="site-nav flex row jcc aic flex-1-1 my-04">
-
-        <!-- <button id="mobile-nav-toggler" class="display:block md:display:none margin-left:1rem">
-          <span>Menu</span>
-        </button> -->
+      <nav class="site-nav flex row jcc aic flex-1-1 ">
 
 
         <div class="logo padding-i-1rem flex-1-1 monospace line-height-1">
-          <a class="site-title no-underline font-big font-gruppo" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+          <a class="site-title no-underline font-big font-hero" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
         </div>
+
+        {% comment %}
+          To future me: menu consists pages where some of them are link holders
+        {% endcomment %}
 
       {%- include menu2.html -%}
 

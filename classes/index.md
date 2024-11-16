@@ -1,5 +1,5 @@
 ---
-title: Robotics Classes
+title: Lessons
 images:
   - classes.jpg
 order: 1

@@ -1,5 +1,5 @@
 title: We Offer
-bg: "#fcfbe9"
+# bg: "#fcfbe9"
 
 classNames: flex row wrap
 columns:

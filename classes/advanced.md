@@ -1,5 +1,5 @@
 ---
-title: Advanced Robotics 12
+title: Advanced
 images:
   - advanced-01.jpg
 order: 3

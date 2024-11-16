@@ -9,48 +9,43 @@ layout: default
   {% case section  %}
 
   {% when "about" %}
-  <section {%if data.bg != blank %}style="background-color: {{data.bg}}" {% endif %}>
-    {% assign image = data.media.image   %}
-    <div class="max-width flex column md:flex-direction:row wrap">
-    <div 
-      class="
-      flex 
-      column 
-      flex:2_1_20rem 
-      md:min-height:20rem
-      "
-      style="background-image: url({{ image  | prepend: '/assets/' | relative_url }});background-size: cover;"
-      >
-    </div>
-    <div class="flex column flex-1-1-15rem p-1 m-05 text-left">
-        <h2 class="flex column ">{{ data.title }}</h2>
-        {% for p in data.body %}
-        <p>{{p}}</p>
-        {% endfor %}
+  <section {%if data.bg  %}style="background-color: {{data.bg}}" {% endif %} class="flex column md:flex-direction:row wrap"    >
+    {% for about in data.columns %}
+      {%- assign image = about.media.image -%}
+      {%- assign button = about.button -%}
+        <div 
+          class="relative flex column flex:2_1_20rem {% if image %}md:min-height:20rem aic{% else %} jcc {% endif %}" {% if about.bg %}style="background-color: {{about.bg}}"{% endif %}
+          >
+          {% if image %}
+          <div class="absolute bg-cover opacity-bg"
+          style="background-image: url({{ image  | prepend: '/assets/' | relative_url }});"
+          ></div>
+          {% endif %}
 
-        {% if data.button.link  %}
-          <a href="{{ data.button.link}}" class="link-button">{{data.button.text}}</a>
-        {% endif %}
-    </div>
-    </div>
-  </section>
+          {% if about.header or about.subheader %}
+          <div class="p-2 z-1 ">
+            {% if about.header %}<h2 class="my-0">{{about.header}}</h2>{% endif %}
+            {% if about.subheader %}<h3 class="italic">{{about.subheader}}</h3>{% endif %}
+          </div>
+          {% endif %}
 
-  {% when "services" %}
-  <section {%if data.bg != blank %}style="background-color: {{data.bg}}" {% endif %}>
-    <div class="max-width flex row wrap">
-    <div class="block w-100 text-center">
-    <h2>{{ data.title }}</h2>
-    </div>
-    {%- for column in data.columns -%}
-    <div class="flex column flex-1-1-20rem p-1 m-05 text-center">
-      <h3>{{column.title}}</h3>
-      <p>{{column.body}}</p>
-      {% if column.button.link  %}
-      <a href="{{column.button.link}}" class="link-button">{{column.button.text}}</a>
-      {% endif %}
-    </div>
-    {%- endfor -%}
-  </div>
+          <div class="block-section ml-4 lh-15 py-2 max-36">
+            {% for p in about.body %}
+            <p>{{p}}</p>
+            {% endfor %}
+
+
+            {% if about.button  %}
+            <div class="block-section mt-2">
+              <a href="{{ about.button.link }}" class="link-button">
+                {{ about.button.text }}
+              </a>
+            </div>
+            {% endif %}
+          </div>
+
+        </div>
+    {% endfor %}
   </section>
 
 
@@ -83,6 +78,39 @@ layout: default
       <p>{{column.body}}</p>
       <p>{{column.person}}</p>
     </div>
+    {%- endfor -%}
+  </div>
+  </section>
+  {% else %}
+  <section {%if data.bg  %}style="background-color: {{data.bg}}" {% endif %}>
+    <div class="max-width flex row wrap">
+    <div class="block w-100 text-center">
+    <h2>{{ data.title }}</h2>
+    </div>
+    {%- for column in data.columns -%}
+      <div class="flex column flex-1-1-20rem p-1 m-05 text-center shadow">
+      {% if column.link %}<a href="{{column.link}}" class="card-as-link">{% endif %}
+
+        {% if column.image %}
+          <div class="card" > 
+            <img 
+
+     srcset="{{column.image | replace: 'jpg', 'webp' }} 1x, 
+             {{column.image}} 1x"
+              loading="lazy"> 
+
+          </div>
+        {% endif %}
+
+        <h3>{{column.title}}</h3>
+        <p>{{column.body}}</p>
+        {% if column.button.link  %}
+        <a href="{{column.button.link}}" class="link-button">{{column.button.text}}</a>
+        {% endif %}
+
+
+      {% if column.link %}</a>{% endif %}
+      </div>
     {%- endfor -%}
   </div>
   </section>

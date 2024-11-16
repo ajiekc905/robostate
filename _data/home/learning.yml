@@ -1,0 +1,20 @@
+title: Innovative learning
+subtitle: Explore technology through coding and robotics
+classNames: flex row wrap desktop-images
+columns:
+  - title: Beginner Robotics Course
+    body: Kickstart your journey into robotics with hands-on learning.
+    image: /assets/lessons_01.jpg
+    link: /classes/junior.html
+
+  - title: Advanced robotics course
+    body: Explore robotics and coding in an advanced, hands-on learning environment.
+    image: /assets/lessons_02.jpg
+    link: /classes/advanced.html
+
+  - title: Robotics competitions
+    body: Participate in competitions with expert guidance and teamwork.
+    image: /assets/lessons_03.jpg
+    link: /classes/advanced.html
+    link: /classes/competitions.html
+

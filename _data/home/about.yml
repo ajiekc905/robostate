@@ -1,10 +1,16 @@
-title: About
-body: 
-  - At Robotic State, we ignite young minds with technology and creativity, fostering lifelong learning through hands-on coding and robotics. We empower ages 7-17 to develop critical skills like teamwork and problem-solving, preparing them to thrive in tomorrow's world.
-bg: "#f7f5fa"
-button:
-  link: 
-  text: Read more
-media:
-  image: "dsc3396_2_1440_80.jpg"
-  video: https://youtu.be/Vov19ZciXhw
+# title: About
+# bg: "#de00de"
+columns:
+- header: Shape the Future
+  subheader: Innovate Beyond Limits
+  media:
+    image: dsc3396_2_1440_80.jpg
+- body:
+  - At Robotic State in Lawson, Blue Mountains, we ignite young minds through technology
+    and creativity. Our hands-on coding and robotics programs empower ages 7-17 to
+    build critical skills in teamwork and problem-solving, preparing them to excel
+    in the future.
+  bg: "#dedede"
+  button:
+    text: Book Trial
+    link: https://calendly.com/robostate/robotics-trial

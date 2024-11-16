@@ -1,19 +1,23 @@
 {%- assign contact = site.data.home.contactform -%}
 
-<section {%if contact.bg !=blank %}style="background-color: {{contact.bg}}" {% endif %}>
-  <div class="{{contact.classNames}}">
+<section class="flex row wrap max-width gap-3" id="contact-us">
+
+  <div class="{{contact.classNames}} flex:2_1_20rem">
     <h2 class="flex column text-center">{{ contact.title }}</h2>
+    <h3 class="flex column text-center">{{ contact.subtitle }}</h3>
     <form action="https://formsubmit.co/{{contact.email}}" method="POST" class="column flex">
       {%- for field in contact.fields -%}
         <div class="minw800px:width:100% form-group">
-          <label class="label" for="{{field.id}}">{{field.title}}</label>
           {% if field.type == "textarea" %}
-            <textarea class="input" id="{{field.id}}" name="{{field.id}}" required rows="4" 
+            <label class="label" for="{{field.id}}">{{field.title}}</label>
+            <textarea class="input" id="{{field.id}}" name="{{field.id}}" required rows="6" 
               {% if field.pattern %}pattern="{{field.pattern}}" {% endif %} 
               placeholder="{{field.title}}"></textarea>
           {% elsif field.type == "checkbox" %}
       <input type="checkbox" class="input" id="{{field.id}}" name="{{field.id}}" checked="{{field.value}}">
+          <label class="label" for="{{field.id}}">{{field.title}}</label>
           {% else %}
+            <label class="label" for="{{field.id}}">{{field.title}}</label>
             <input class="input" type="{{field.type | default('text')}}" id="{{field.id}}" name="{{field.id}}" required 
               {% if field.pattern %}pattern="{{field.pattern}}" {% endif %} 
               placeholder="{{field.title}}">
@@ -25,6 +29,19 @@
         <button type="submit">Submit</button>
       </div>
     </form>
+
+  </div>
+  <div class="flex column flex:2_1_20rem  jcc">
+    <div class="bgg  p-3">
+      {% for item in contact.column2 %}
+        <div class="link-grid-3">
+        <div class="link-a">{{ item.title }}</div>
+        <div class="link-b icon-{{item.icon}}"></div>
+        <a class="link-c" href="{{ item.link }}">{{item.linktitle}}</a>
+        </div>
+      {% endfor %}
+    </div>
+
   </div>
 </section>
 
