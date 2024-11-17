@@ -95,7 +95,9 @@ layout: default
           <div class="card" > 
             <img 
 
-     srcset="{{column.image | replace: 'jpg', 'webp' }} 1x, 
+     srcset="
+             {{column.image | replace: 'jpg', 'avif' }} 1x, 
+             {{column.image | replace: 'jpg', 'webp' }} 1x, 
              {{column.image}} 1x"
               loading="lazy"> 
 
