@@ -31,12 +31,5 @@ fields:
   title: I allow this website to store my submission so they can respond to my inquiry.
   type: checkbox
   value: true
+
 column2:
-- icon: email
-  title: Get in touch
-  linktitle: Email
-  link: lanissimova@gmail.com
-- icon: location
-  title: Location
-  linktitle: Find us on Google maps
-  link: "https://www.google.com/maps/place/+Sydney+NSW+2783+AU"
